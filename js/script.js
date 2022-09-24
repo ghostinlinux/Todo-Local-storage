@@ -77,15 +77,23 @@ function updatetask(index){
     let taskobj = JSON.parse(tasks);
     valueupdate.value = taskobj[index];
 
-    valueupdate.addEventListener('keypress', function(e){
+   valueupdate.addEventListener('keypress', function(e){
         if(e.key=='Enter'){
             let tasks = localStorage.getItem("taskslist");
             tasks = JSON.parse(tasks)
-            tasks[index] = valueupdate.value;
-            console.log(tasks)
-            localStorage.setItem("taskslist",JSON.stringify(tasks));
-            location.reload();
-            valueupdate.value='';
+            if(valueupdate.value.length>0){
+                tasks[index] = valueupdate.value;
+                localStorage.setItem("taskslist",JSON.stringify(tasks));
+                location.reload();
+                valueupdate.value='';
+            }
+            else{
+                alertbox.style.display="block";
+                setInterval(function(){
+                    alertbox.style.display="none";
+                },1500)
+            }
+            
             
         }
     })
