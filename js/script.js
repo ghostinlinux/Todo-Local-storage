@@ -72,6 +72,7 @@ addedtasklist.addEventListener("click",(e)=>{
 
 
 function updatetask(index){
+    valueupdate.style.display="block";
     let tasks = localStorage.getItem("taskslist");
     let taskobj = JSON.parse(tasks);
     valueupdate.value = taskobj[index];
@@ -89,10 +90,3 @@ function updatetask(index){
         }
     })
 }
-
-
-
-
-
-
-
